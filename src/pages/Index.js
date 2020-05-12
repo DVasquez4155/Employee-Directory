@@ -1,10 +1,16 @@
 import React, { Component } from "react"
+
+//Components
 import Hero from "../components/Hero";
 import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
-import EmployeeCard from "../components/EmployeeCard";
-import {Dropdown} from 'react-bootstrap';
+import EmployeeList from "../components/EmployeeList";
+
+//Bootstrap
+import {Dropdown,Table} from 'react-bootstrap';
+
+//Database
 import employees from "../employees.json";
 import departments from "../departments.json";
 import roles from "../roles.json";
@@ -117,17 +123,26 @@ class Index extends Component {
           </Col>
         </Row>
         <Row>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Title</th>
+              <th>Department</th>
+              <th>Salary</th>
+              <th>Manager</th>
+            </tr>
+          </thead>
+          <tbody>
         {this.state.employees.map(employee => (
-          <EmployeeCard
-            name={employee.name}
-            id={employee.id}
-            key={employee.id}
-            title={employee.title}
-            department={employee.department}
-            salary={this.formatter.format(employee.salary)}
-            manager={employee.manager}
+          <EmployeeList
+            employee={employee}
           />
         ))}
+          </tbody>
+        </Table>
         </Row>
       </Container>
     </div>
