@@ -62,11 +62,10 @@ class Index extends Component {
   })
   handleSelect = e => {
     const list = this.state.employees;
-    const rules = {a:null,b:null};
+    const rules = {a:null,b:"name"};
     switch(parseInt(e)) {
       case 0:
         rules.a = "id";
-        rules.b = "name";
         break;
       case 1:
         rules.a = "first_name";
@@ -74,23 +73,18 @@ class Index extends Component {
         break;
       case 2:
         rules.a = "title";
-        rules.b = "name";
         break;
       case 3:
         rules.a = "department";
-        rules.b = "name";
         break;
       case 4:
         rules.a = "salary";
-        rules.b = "name";
         break;
       case 5:
         rules.a = "manager";
-        rules.b = "name";
         break;
       default:
         rules.a = "id";
-        rules.b = "name";
     }
     var sortedEmployees;
       sortedEmployees = list.sort((a, b) => (a[rules.a] > b[rules.a]) ? 1 : (a[rules.a] === b[rules.a]) ? ((a[rules.b] > b[rules.b]) ? 1 : -1) : -1 )
