@@ -61,11 +61,6 @@ class Index extends Component {
     employee.manager = this.findEmployeeById(employee.manager_id)
     return null;
   })}
-  formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2
-  })
   handleSelect = e => {
     const list = this.state.employees;
     const rules = {a:null,b:"name"};
@@ -122,27 +117,30 @@ class Index extends Component {
             </Dropdown>
           </Col>
         </Row>
+        <br></br>
         <Row>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Title</th>
-              <th>Department</th>
-              <th>Salary</th>
-              <th>Manager</th>
-            </tr>
-          </thead>
-          <tbody>
-        {this.state.employees.map(employee => (
-          <EmployeeList
-            employee={employee}
-          />
-        ))}
-          </tbody>
-        </Table>
+          <Col size="md-12">
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Title</th>
+                  <th>Department</th>
+                  <th>Salary</th>
+                  <th>Manager</th>
+                </tr>
+              </thead>
+              <tbody>
+            {this.state.employees.map(employee => (
+              <EmployeeList
+                employee={employee}
+              />
+            ))}
+              </tbody>
+            </Table>
+        </Col>
         </Row>
       </Container>
     </div>
